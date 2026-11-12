@@ -1,0 +1,16 @@
+Hola bro, estoy usando el "archivo.writelines()"
+Esto nos pide un iterable, te recomiendo usar una lista
+Bueno espero esté bien va?
+Hola bro, no te olvides de tomar "agüita"
+Espero estés bien
+DIOS te bendiga bro
+
+
+Estoy agregando esto al archivo.txt con "archivo.write()", pero le di el permiso "a"
+Hola
+Estoy agregando con el bucle for, la línea 1 
+Estoy agregando con el bucle for, la línea 2 
+Estoy agregando con el bucle for, la línea 3 
+Estoy agregando con el bucle for, la línea 4 
+Estoy agregando con el bucle for, la línea 5 
+Hola bro

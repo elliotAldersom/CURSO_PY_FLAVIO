@@ -1,0 +1,23 @@
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# Entornos virtuales
+venv/
+.venv/
+
+# Caché de Python
+__pycache__/
+*.py[cod]
+
+# Archivos compilados
+*.egg-info/
+
+# Configuración de herramientas
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Archivos del sistema
+.DS_Store

@@ -1,0 +1,31 @@
+Los datos son:
+Nombre: Flavio
+Apellido: Silva
+Edad: 18
+----------
+Nombre: Fabian
+Apellido: Silva
+Edad: 21
+----------
+Nombre: Jorge
+Apellido: Estrada
+Edad: 40
+----------
+Nombre: Flavio
+Apellido: Silva
+Edad: 18
+----------
+Nombre: Fabian
+Apellido: Silva
+Edad: 21
+----------
+Nombre: Jorge
+Apellido: Estrada
+Edad: 40
+----------
+Flavio  Silva  18
+----------
+Fabian  Silva  21
+----------
+Jorge  Estrada  40
+----------
