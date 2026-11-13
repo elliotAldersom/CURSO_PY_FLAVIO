@@ -7,5 +7,5 @@
 - [Carpeta](./DALTO/DOC/) 
 - Ahí podrás encontrar una [Introducción](./DALTO//DOC/introduccion.md), el cual contendrá toda la introducción al curso, enlaces a cada nivel y capítulo. 
 
-
+> Quiero dar créditos a SoyDalto y a Yoshio Agarie.
 > Que lo disfrutes :) 
