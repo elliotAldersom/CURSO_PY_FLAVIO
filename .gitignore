@@ -21,3 +21,7 @@ __pycache__/
 
 # Archivos del sistema
 .DS_Store
+
+.obsidian/
+
+odd/

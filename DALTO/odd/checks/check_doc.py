@@ -1,20 +1,22 @@
 #!/usr/bin/env python3
-"""Automated quality gate for DALTO/DOC documentation files.
+"""Automated quality gate for DOC/ documentation files.
 
 Validates per topic file (Basico|Intermedio|Avanzado/**/*.md):
-  1. Single H1 title and the 10 mandatory H2 sections in exact order.
+  1. Single H1 title and the 9 mandatory H2 sections in exact order.
   2. All three progressive example levels (### Básico, ### Intermedio, ### Avanzado).
   3. Relative Markdown links resolve to existing files (or PLANNED paths in incremental mode).
   4. Python code blocks parse cleanly via ast.parse (blocks with '# ERROR INTENCIONAL' excluded),
      and optionally execute cleanly with --exec when self-contained.
-  5. Section 10 includes explicit 'Directorio de origen' traceability (or 'fundamento complementario')
-     and every referenced CLASES_PYTHON/... or CLASS_PY_POO/... path exists on disk.
-  6. Section 11 official docs.python.org URLs point to real pages (no invented tutorial/reference/library pages).
+  5. No references to the course .py sources: no 'Relación con el material original' section,
+     no CLASES_PYTHON/... or CLASS_PY_POO/... paths, no 'archivo.py L18' style line citations,
+     and no backticked name of a .py file that really exists in this repository (prompt.md §10:
+     every document must be self-contained and portable).
+  6. Section 10 official docs.python.org URLs point to real pages (no invented tutorial/reference/library pages).
   7. No leaked secret keys ('sk-proj-') anywhere in the file.
 
 Validates for DOC/introduccion.md:
-  - All 8 mandatory H2 sections from prompt.md Phase 4, strengths/weaknesses table,
-    and navigable links to all 41 planned topic files.
+  - All 8 mandatory H2 sections from prompt.md, strengths/weaknesses table,
+    and navigable links to every planned topic file.
 """
 from __future__ import annotations
 
@@ -26,7 +28,7 @@ import tempfile
 from pathlib import Path
 from urllib.parse import urlparse
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 DOC = ROOT / "DOC"
 
 PLANNED = {
@@ -68,8 +70,7 @@ REQUIRED_H2 = [
     "## 7. Uso en producción",
     "## 8. Errores comunes y recomendaciones",
     "## 9. Resumen",
-    "## 10. Relación con el material original",
-    "## 11. Referencias oficiales",
+    "## 10. Referencias oficiales",
 ]
 
 INTRO_REQUIRED_H2 = [
@@ -119,9 +120,29 @@ SOURCE_PATH_RE = re.compile(
     r"`((?:CLASES_PYTHON|CLASS_PY_POO)/[^`\n]+?\.(?:py|PY|csv|txt|png))`"
 )
 EXTERNAL_IMPORT_RE = re.compile(
-    r"^\s*(?:import|from)\s+(pandas|matplotlib|seaborn|numpy|textblob|openai|tkinter)\b",
+    r"^\s*(?:import|from)\s+(pandas|matplotlib|seaborn|numpy|textblob|openai|tkinter|openpyxl)\b",
     re.M,
 )
+
+# prompt.md §10 — a document must never point the reader at a course .py file.
+PY_LINE_CITE_RE = re.compile(r"\.py[`\s,'\"()]*\s*(?:L\d|l[ií]neas?\s*\d)", re.I)
+PY_NAME_CITE_RE = re.compile(r"`([A-Za-z0-9_]+\.py)`")
+ALLOWED_PY_NAMES = {"__init__.py", "__main__.py"}
+_PY_NAMES_CACHE: set[str] | None = None
+
+
+def existing_py_names() -> set[str]:
+    """Basenames of every .py file in the repo (excluding DOC/ and .git/)."""
+    global _PY_NAMES_CACHE
+    if _PY_NAMES_CACHE is None:
+        names: set[str] = set()
+        for path in ROOT.rglob("*.py"):
+            parts = path.parts
+            if ".git" in parts or "DOC" in parts:
+                continue
+            names.add(path.name)
+        _PY_NAMES_CACHE = names
+    return _PY_NAMES_CACHE
 
 
 def validate_python_docs_url(rel: Path, url: str, errors: list[str]) -> None:
@@ -175,8 +196,8 @@ def check_topic(path: Path, errors: list[str], pending: list[str]) -> None:
     if len(h1) != 1:
         errors.append(f"{rel}: expected 1 H1 outside code fences, found {len(h1)}")
 
-    if len(h2) != 10:
-        errors.append(f"{rel}: expected 10 H2 sections, found {len(h2)}: {h2}")
+    if len(h2) != len(REQUIRED_H2):
+        errors.append(f"{rel}: expected {len(REQUIRED_H2)} H2 sections, found {len(h2)}: {h2}")
     for want in REQUIRED_H2:
         if want not in h2:
             errors.append(f"{rel}: missing section '{want}'")
@@ -229,27 +250,35 @@ def check_topic(path: Path, errors: list[str], pending: list[str]) -> None:
                     stderr_last = (proc.stderr.strip().splitlines() or ["unknown error"])[-1]
                     errors.append(f"{rel}: python block #{i} runtime failure: {stderr_last}")
 
-    if "## 10. Relación con el material original" in text and "## 11." in text:
-        sec10 = text.split("## 10. Relación con el material original", 1)[1].split("## 11.", 1)[0]
-        has_origin_label = "directorio de origen" in sec10.lower()
-        has_complementary = "fundamento complementario" in sec10.lower()
-        cited_paths = SOURCE_PATH_RE.findall(sec10)
-        if not cited_paths and not has_complementary:
-            errors.append(
-                f"{rel}: section 10 must cite backticked source paths (`CLASES_PYTHON/...` or `CLASS_PY_POO/...`) "
-                "or state 'fundamento complementario'"
-            )
-        if cited_paths and not has_origin_label:
-            errors.append(f"{rel}: section 10 must explicitly specify 'Directorio de origen'")
-        for cited in cited_paths:
-            if not (ROOT / cited).exists():
-                errors.append(f"{rel}: section 10 cites non-existent source file '{cited}'")
+    if "Relación con el material original" in text:
+        errors.append(
+            f"{rel}: forbidden section 'Relación con el material original' — "
+            "documents must not reference the course .py sources (prompt.md §10)"
+        )
 
-    if "## 11. Referencias oficiales" in text:
-        sec11 = text.split("## 11. Referencias oficiales", 1)[1]
-        urls = URL_RE.findall(sec11)
+    for cited in SOURCE_PATH_RE.findall(text):
+        errors.append(f"{rel}: forbidden reference to course source '{cited}' (prompt.md §10)")
+
+    for match in PY_LINE_CITE_RE.finditer(text):
+        errors.append(
+            f"{rel}: forbidden line citation '{match.group(0).strip()}' — "
+            "write the example inline in the document (prompt.md §10)"
+        )
+
+    for name in sorted(set(PY_NAME_CITE_RE.findall(text))):
+        if name in ALLOWED_PY_NAMES:
+            continue
+        if name in existing_py_names():
+            errors.append(
+                f"{rel}: forbidden reference to the existing source '{name}' — "
+                "copy the example into the document instead (prompt.md §10)"
+            )
+
+    if "## 10. Referencias oficiales" in text:
+        sec10 = text.split("## 10. Referencias oficiales", 1)[1]
+        urls = URL_RE.findall(sec10)
         if not urls:
-            errors.append(f"{rel}: section 11 has no official URLs")
+            errors.append(f"{rel}: section 10 has no official URLs")
         for url in urls:
             validate_python_docs_url(rel, url, errors)
 

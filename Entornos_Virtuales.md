@@ -109,10 +109,59 @@ source .venv/bin/activate
 | bash / zsh (Linux, macOS) | `source .venv/bin/activate` |
 | fish | `source .venv/bin/activate.fish` |
 | csh / tcsh | `source .venv/bin/activate.csh` |
-| PowerShell (Windows) | `.venv\Scripts\Activate.ps1` |
-| CMD (Windows) | `.venv\Scripts\activate.bat` |
+| PowerShell (Windows) | `.\.venv\Scripts\Activate.ps1` |
+| CMD (Windows) | `.\.venv\Scripts\activate.bat` |
+| Git Bash (Windows) | `source .venv/Scripts/activate` |
 
-> **Nota (PowerShell):** si Windows bloquea el script, ejecuta una sola vez `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`.
+### Guía específica para entornos Windows
+
+En sistemas operativos Windows, la estructura interna del entorno virtual difiere ligeramente de Linux/macOS: los ejecutables y scripts residen en la carpeta `.venv\Scripts\` en lugar de `.venv/bin/`.
+
+#### 1. Activación en PowerShell
+```powershell
+# Desde la raíz del proyecto
+.\.venv\Scripts\Activate.ps1
+```
+
+> **Solución a error de permisos en PowerShell (`UnauthorizedAccess`):**
+> De forma predeterminada, Windows bloquea la ejecución de scripts no firmados descargados o locales (`File ... cannot be loaded because running scripts is disabled on this system`). Para permitir la activación sin comprometer la seguridad del sistema global, ejecuta una sola vez en PowerShell:
+> ```powershell
+> Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+> ```
+> O ejecuta la sesión actual eludiendo temporalmente la política:
+> ```powershell
+> powershell -ExecutionPolicy Bypass
+> ```
+
+#### 2. Activación en Símbolo del Sistema (CMD)
+```cmd
+REM Desde la raíz del proyecto
+.\.venv\Scripts\activate.bat
+```
+
+#### 3. Verificación de entorno activo en Windows
+- **En PowerShell:**
+  ```powershell
+  # Verifica variable de entorno
+  $env:VIRTUAL_ENV
+  # Verifica ruta del ejecutable
+  Get-Command python
+  ```
+- **En CMD:**
+  ```cmd
+  echo %VIRTUAL_ENV%
+  where python
+  ```
+- **Verificación agnóstica multiplataforma (recomendada):**
+  ```bash
+  python -c "import sys; print(sys.prefix != sys.base_prefix)"
+  ```
+
+#### 4. Desactivación en Windows
+Tanto en PowerShell como en CMD:
+```cmd
+deactivate
+```
 
 ### Ejemplo avanzado: no hace falta activar para ejecutar
 
