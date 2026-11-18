@@ -2,6 +2,11 @@
 
 ## 2. Introducción
 
+> [!NOTE] Navegación y temas relacionados
+> - **Entrada y salida de datos:** [Procesamiento de Archivos CSV](archivos_csv.md) (módulo `csv` y comparación con Pandas) y [Procesamiento de Hojas de Cálculo Excel](archivos_excel.md) (`openpyxl` y `read_excel`/`to_excel`).
+> - **Operaciones avanzadas y optimización:** [Pandas avanzado: Limpieza, Transformación y Optimización](../../Avanzado/chapter-four/pandas_avanzado.md) (nulos, duplicados, `.map()`, `concat`, `chunksize`).
+> - **Representación gráfica:** [Visualización de Datos con Matplotlib y Seaborn](visualizacion.md).
+
 Mientras el módulo estándar [csv](archivos_csv.md) resulta idóneo para recorrer archivos registro por registro con memoria mínima, realizar cálculos estadísticos, reordenamientos multicriterio, selecciones por etiquetas o filtrados compuestos sobre listas de diccionarios en Python puro exige escribir numerosos bucles imperativos lentos y propensos a errores.
 
 **Pandas** es una **biblioteca externa de terceros** (`pip install pandas`) —no incluida en la biblioteca estándar de Python— diseñada para la manipulación y el análisis eficiente de datos tabulares y series etiquetadas en memoria, apoyada internamente sobre bloques contiguos tipados de NumPy (y opcionalmente Apache Arrow en Pandas 2.x).
@@ -60,14 +65,14 @@ Observación clave: si un `DataFrame` acaba de ordenarse con `sort_values` y su 
 
 Operaciones fundamentales sobre `DataFrame` y `Series` en Pandas 2.x:
 
-```text
+```python
 import pandas as pd
 
 df = pd.read_csv(ruta, encoding="utf-8")
 subtabla = df.loc[(df["col_a"] >= limite) & (df["col_b"] == "activo"), ["col_a", "col_c"]]
 ```
 
-Tabla sintética de atributos, métodos e indexadores esenciales:
+**Tabla sintética de atributos, métodos e indexadores esenciales:**
 
 | N° | Elemento | Descripción | Ejemplo |
 |---|---|---|---|
@@ -82,7 +87,7 @@ Tabla sintética de atributos, métodos e indexadores esenciales:
 | 9 | `df.sort_values(by, ascending)` | Retorna copia ordenada por una o varias columnas | `df.sort_values("edad", ascending=False)` |
 | 10 | `df.loc[etiq_f, etiq_c]` | Selección por etiquetas o máscara booleana (rebanado **inclusivo**) | `df.loc[0:2, "nombre":"edad"]` |
 | 11 | `df.iloc[pos_f, pos_c]` | Selección por posición entera base `0` (rebanado **semiabierto**) | `df.iloc[0:2, [0, 2]]` |
-| 12 | `(c1) & (c2)` / `|` / `~` | Operadores booleanos vectorizados elemento a elemento | `df.loc[(df["x"] > 0) & (~df["nulo"])]` |
+| 12 | `(c1) & (c2)` `(c1) \| (c2)` `~c1` | Operadores booleanos vectorizados elemento a elemento | `df.loc[(df["x"] > 0) & (~df["nulo"])]` |
 
 ## 5. Ejemplos prácticos progresivos
 

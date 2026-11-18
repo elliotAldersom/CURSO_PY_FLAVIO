@@ -73,6 +73,21 @@ REQUIRED_H2 = [
     "## 10. Referencias oficiales",
 ]
 
+METHOD_REQUIRED_H2 = [
+    "## 2. ¿Qué es?",
+    "## 3. ¿Para qué sirve?",
+    "## 4. ¿Cómo funciona?",
+    "## 5. Parámetros",
+    "## 6. Retorno",
+    "## 7. Ejemplos en tres niveles",
+    "## 8. Errores frecuentes y casos borde",
+    "## 9. Buenas prácticas y rendimiento",
+    "## 10. Métodos relacionados",
+    "## 11. Referencias oficiales",
+]
+
+METHOD_LEVELS = ["### Nivel 1: Básico", "### Nivel 2: Intermedio", "### Nivel 3: Avanzado"]
+
 INTRO_REQUIRED_H2 = [
     "## 1. ¿Qué es Python?",
     "## 2. Historia de Python",
@@ -120,7 +135,7 @@ SOURCE_PATH_RE = re.compile(
     r"`((?:CLASES_PYTHON|CLASS_PY_POO)/[^`\n]+?\.(?:py|PY|csv|txt|png))`"
 )
 EXTERNAL_IMPORT_RE = re.compile(
-    r"^\s*(?:import|from)\s+(pandas|matplotlib|seaborn|numpy|textblob|openai|tkinter|openpyxl)\b",
+    r"\b(?:import|from)\s+[^;\n]*\b(pandas|matplotlib|seaborn|numpy|textblob|openai|tkinter|openpyxl|sklearn|scipy|fastapi|uvicorn|pydantic|torch|torchvision|sqlalchemy)\b",
     re.M,
 )
 
@@ -196,20 +211,34 @@ def check_topic(path: Path, errors: list[str], pending: list[str]) -> None:
     if len(h1) != 1:
         errors.append(f"{rel}: expected 1 H1 outside code fences, found {len(h1)}")
 
-    if len(h2) != len(REQUIRED_H2):
-        errors.append(f"{rel}: expected {len(REQUIRED_H2)} H2 sections, found {len(h2)}: {h2}")
-    for want in REQUIRED_H2:
+    is_library_doc = any(p in path.parts for p in ("pandas", "numpy", "matplotlib", "seaborn", "openpyxl", "scikit_learn", "fastapi", "pytorch", "sqlalchemy"))
+    if is_library_doc and path.name == "indice.md":
+        return
+
+    is_method_doc = is_library_doc and not path.name.startswith("fundamentos_")
+    expected_h2 = METHOD_REQUIRED_H2 if is_method_doc else REQUIRED_H2
+
+    if len(h2) != len(expected_h2):
+        errors.append(f"{rel}: expected {len(expected_h2)} H2 sections, found {len(h2)}: {h2}")
+    for want in expected_h2:
         if want not in h2:
             errors.append(f"{rel}: missing section '{want}'")
-    present = [ln for ln in h2 if ln in REQUIRED_H2]
-    if present != REQUIRED_H2:
+    present = [ln for ln in h2 if ln in expected_h2]
+    if present != expected_h2:
         errors.append(f"{rel}: sections out of order")
 
-    if "## 5. Ejemplos prácticos progresivos" in text and "## 6." in text:
-        sec5 = text.split("## 5. Ejemplos prácticos progresivos", 1)[1].split("## 6.", 1)[0]
-        for lvl in LEVELS:
-            if lvl not in sec5:
-                errors.append(f"{rel}: missing example level '{lvl}' in Section 5")
+    if is_method_doc:
+        if "## 7. Ejemplos en tres niveles" in text and "## 8." in text:
+            sec7 = text.split("## 7. Ejemplos en tres niveles", 1)[1].split("## 8.", 1)[0]
+            for lvl in METHOD_LEVELS:
+                if lvl not in sec7:
+                    errors.append(f"{rel}: missing example level '{lvl}' in Section 7")
+    else:
+        if "## 5. Ejemplos prácticos progresivos" in text and "## 6." in text:
+            sec5 = text.split("## 5. Ejemplos prácticos progresivos", 1)[1].split("## 6.", 1)[0]
+            for lvl in LEVELS:
+                if lvl not in sec5:
+                    errors.append(f"{rel}: missing example level '{lvl}' in Section 5")
 
     text_no_fences = re.sub(r"```.*?```", "", text, flags=re.S)
     for target in LINK_RE.findall(text_no_fences):

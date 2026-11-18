@@ -236,8 +236,94 @@ Orientado a la metaprogramación, el modelo de datos interno de Python, los prot
 - [Expresiones regulares (Regex) en Python](Avanzado/chapter-three/expresiones_regulares.md) — Módulo estándar `re`, notación cruda `r"..."`, clases de caracteres, metacaracteres, cuantificadores codiciosos y perezosos, métodos de búsqueda y reemplazo (`search`, `match`, `findall`, `sub`), e inspección de objetos `Match`.
 - [Expresiones regulares avanzadas en Python](Avanzado/chapter-three/regex_avanzada.md) — Precompilación con `re.compile()`, evaluación perezosa con `re.finditer()`, grupos de captura semánticos nombrados, aserciones de ancho cero (*lookaround*), banderas de compilación y prevención de vulnerabilidades ReDoS (*Catastrophic Backtracking*).
 
-#### Chapter Four: Análisis de datos avanzado
+#### Chapter Four: Análisis de datos avanzado y métodos de Pandas
 - [Pandas avanzado: manipulación, limpieza y escalabilidad en Python](Avanzado/chapter-four/pandas_avanzado.md) — Tratamiento riguroso de valores faltantes (`dropna`, `fillna`), deduplicación, optimización extrema de memoria con tipos categóricos (`category`), concatenación (`concat`), transformaciones con `DataFrame.map()` (reemplazo oficial de `applymap`), y procesamiento por lotes con `chunksize`.
+- [DataFrame.drop_duplicates](Avanzado/pandas/06_duplicados/drop_duplicates.md) — Identificación y descarte de registros redundantes mediante hashing en C con control de ocurrencias (`keep`) e indexación.
+
+
+
+##### Métodos y Referencia Técnica de Pandas
+- [Excel File](Avanzado/pandas/01_lectura_escritura/excel_file.md)
+- [Indice](Avanzado/pandas/01_lectura_escritura/indice.md)
+- [Read Csv](Avanzado/pandas/01_lectura_escritura/read_csv.md)
+- [Read Excel](Avanzado/pandas/01_lectura_escritura/read_excel.md)
+- [To Csv](Avanzado/pandas/01_lectura_escritura/to_csv.md)
+- [To Excel](Avanzado/pandas/01_lectura_escritura/to_excel.md)
+- [Columns](Avanzado/pandas/02_inspeccion_exploracion/columns.md)
+- [Describe](Avanzado/pandas/02_inspeccion_exploracion/describe.md)
+- [Dtypes](Avanzado/pandas/02_inspeccion_exploracion/dtypes.md)
+- [Head](Avanzado/pandas/02_inspeccion_exploracion/head.md)
+- [Indice](Avanzado/pandas/02_inspeccion_exploracion/indice.md)
+- [Info](Avanzado/pandas/02_inspeccion_exploracion/info.md)
+- [Isna](Avanzado/pandas/02_inspeccion_exploracion/isna.md)
+- [Nunique](Avanzado/pandas/02_inspeccion_exploracion/nunique.md)
+- [Sample](Avanzado/pandas/02_inspeccion_exploracion/sample.md)
+- [Shape](Avanzado/pandas/02_inspeccion_exploracion/shape.md)
+- [Tail](Avanzado/pandas/02_inspeccion_exploracion/tail.md)
+- [Value Counts](Avanzado/pandas/02_inspeccion_exploracion/value_counts.md)
+- [Between](Avanzado/pandas/03_seleccion_filtrado/between.md)
+- [Filtrado Booleano](Avanzado/pandas/03_seleccion_filtrado/filtrado_booleano.md)
+- [Iloc](Avanzado/pandas/03_seleccion_filtrado/iloc.md)
+- [Indice](Avanzado/pandas/03_seleccion_filtrado/indice.md)
+- [Isin](Avanzado/pandas/03_seleccion_filtrado/isin.md)
+- [Loc](Avanzado/pandas/03_seleccion_filtrado/loc.md)
+- [Query](Avanzado/pandas/03_seleccion_filtrado/query.md)
+- [Str Contains](Avanzado/pandas/03_seleccion_filtrado/str_contains.md)
+- [Idxmax](Avanzado/pandas/04_ordenamiento_indices/idxmax.md)
+- [Idxmin](Avanzado/pandas/04_ordenamiento_indices/idxmin.md)
+- [Indice](Avanzado/pandas/04_ordenamiento_indices/indice.md)
+- [Nlargest](Avanzado/pandas/04_ordenamiento_indices/nlargest.md)
+- [Nsmallest](Avanzado/pandas/04_ordenamiento_indices/nsmallest.md)
+- [Rank](Avanzado/pandas/04_ordenamiento_indices/rank.md)
+- [Reset Index](Avanzado/pandas/04_ordenamiento_indices/reset_index.md)
+- [Set Index](Avanzado/pandas/04_ordenamiento_indices/set_index.md)
+- [Sort Values](Avanzado/pandas/04_ordenamiento_indices/sort_values.md)
+- [Apply](Avanzado/pandas/05_limpieza_transformacion/apply.md)
+- [Assign](Avanzado/pandas/05_limpieza_transformacion/assign.md)
+- [Astype](Avanzado/pandas/05_limpieza_transformacion/astype.md)
+- [Cut](Avanzado/pandas/05_limpieza_transformacion/cut.md)
+- [Dropna](Avanzado/pandas/05_limpieza_transformacion/dropna.md)
+- [Fillna](Avanzado/pandas/05_limpieza_transformacion/fillna.md)
+- [Indice](Avanzado/pandas/05_limpieza_transformacion/indice.md)
+- [Map](Avanzado/pandas/05_limpieza_transformacion/map.md)
+- [Pipe](Avanzado/pandas/05_limpieza_transformacion/pipe.md)
+- [Qcut](Avanzado/pandas/05_limpieza_transformacion/qcut.md)
+- [Rename](Avanzado/pandas/05_limpieza_transformacion/rename.md)
+- [Replace](Avanzado/pandas/05_limpieza_transformacion/replace.md)
+- [Str Lower](Avanzado/pandas/05_limpieza_transformacion/str_lower.md)
+- [Str Strip](Avanzado/pandas/05_limpieza_transformacion/str_strip.md)
+- [Str Title](Avanzado/pandas/05_limpieza_transformacion/str_title.md)
+- [To Numeric](Avanzado/pandas/05_limpieza_transformacion/to_numeric.md)
+- [Duplicated](Avanzado/pandas/06_duplicados/duplicated.md)
+- [Indice](Avanzado/pandas/06_duplicados/indice.md)
+- [Agg](Avanzado/pandas/07_agrupacion_agregacion/agg.md)
+- [Crosstab](Avanzado/pandas/07_agrupacion_agregacion/crosstab.md)
+- [Cumsum](Avanzado/pandas/07_agrupacion_agregacion/cumsum.md)
+- [Groupby](Avanzado/pandas/07_agrupacion_agregacion/groupby.md)
+- [Indice](Avanzado/pandas/07_agrupacion_agregacion/indice.md)
+- [Mean](Avanzado/pandas/07_agrupacion_agregacion/mean.md)
+- [Median](Avanzado/pandas/07_agrupacion_agregacion/median.md)
+- [Pivot Table](Avanzado/pandas/07_agrupacion_agregacion/pivot_table.md)
+- [Quantile](Avanzado/pandas/07_agrupacion_agregacion/quantile.md)
+- [Std](Avanzado/pandas/07_agrupacion_agregacion/std.md)
+- [Sum](Avanzado/pandas/07_agrupacion_agregacion/sum.md)
+- [Diff](Avanzado/pandas/08_fechas_series_tiempo/diff.md)
+- [Dt Accessor](Avanzado/pandas/08_fechas_series_tiempo/dt_accessor.md)
+- [Dt Day Names](Avanzado/pandas/08_fechas_series_tiempo/dt_day_names.md)
+- [Dt Isocalendar](Avanzado/pandas/08_fechas_series_tiempo/dt_isocalendar.md)
+- [Dt To Period](Avanzado/pandas/08_fechas_series_tiempo/dt_to_period.md)
+- [Dt Year Month](Avanzado/pandas/08_fechas_series_tiempo/dt_year_month.md)
+- [Indice](Avanzado/pandas/08_fechas_series_tiempo/indice.md)
+- [Resample](Avanzado/pandas/08_fechas_series_tiempo/resample.md)
+- [To Datetime](Avanzado/pandas/08_fechas_series_tiempo/to_datetime.md)
+- [Concat](Avanzado/pandas/09_combinacion_reestructuracion/concat.md)
+- [Indice](Avanzado/pandas/09_combinacion_reestructuracion/indice.md)
+- [Melt](Avanzado/pandas/09_combinacion_reestructuracion/melt.md)
+- [Merge](Avanzado/pandas/09_combinacion_reestructuracion/merge.md)
+- [Corr](Avanzado/pandas/10_estadistica/corr.md)
+- [Indice](Avanzado/pandas/10_estadistica/indice.md)
+- [Fundamentos Pandas](Avanzado/pandas/fundamentos_pandas.md)
+- [Indice](Avanzado/pandas/indice.md)
 
 #### Chapter Five: Tipado estático y modelado de datos
 - [Sistema de tipos gradual y anotaciones de tipos en Python](Avanzado/chapter-five/tipado_anotaciones.md) — Tipado gradual (PEP 484), uniones modernas con `|`, contenedores genéricos, `Callable`, `TypeVar`, `Generic` y protocolos estructurales (PEP 544).
@@ -248,4 +334,231 @@ Orientado a la metaprogramación, el modelo de datos interno de Python, los prot
 - [Paralelismo real y cómputo intensivo con multiprocessing en Python](Avanzado/chapter-six/multiprocesamiento.md) — Evasión del GIL para tareas CPU-bound, métodos `spawn` vs `fork`, comunicación IPC con `Queue` y `ProcessPoolExecutor`.
 - [Programación asíncrona cooperativa con asyncio en Python](Avanzado/chapter-six/asincronia_asyncio.md) — Bucle de eventos, corrutinas con `async def` y `await`, orquestación concurrente con `gather`, colas asíncronas y cancelación limpia de tareas.
 - [Pruebas automatizadas y depuración en Python](Avanzado/chapter-six/testing_depuracion.md) — Frameworks `unittest` y `pytest`, dobles de prueba con `unittest.mock`, fixtures temporales seguras y depuración interactiva con `pdb` y `breakpoint()`.
+
+
+
+##### Métodos y Referencia Técnica de NumPy
+- [Arange](Avanzado/numpy/01_creacion_arreglos/arange.md)
+- [Array](Avanzado/numpy/01_creacion_arreglos/array.md)
+- [Eye](Avanzado/numpy/01_creacion_arreglos/eye.md)
+- [Full](Avanzado/numpy/01_creacion_arreglos/full.md)
+- [Indice](Avanzado/numpy/01_creacion_arreglos/indice.md)
+- [Linspace](Avanzado/numpy/01_creacion_arreglos/linspace.md)
+- [Ones](Avanzado/numpy/01_creacion_arreglos/ones.md)
+- [Zeros](Avanzado/numpy/01_creacion_arreglos/zeros.md)
+- [Add](Avanzado/numpy/05_operaciones_vectorizadas/add.md)
+- [Broadcasting](Avanzado/numpy/05_operaciones_vectorizadas/broadcasting.md)
+- [Indice](Avanzado/numpy/05_operaciones_vectorizadas/indice.md)
+- [Multiply](Avanzado/numpy/05_operaciones_vectorizadas/multiply.md)
+- [Power](Avanzado/numpy/05_operaciones_vectorizadas/power.md)
+- [Argmin Argmax](Avanzado/numpy/06_estadistica_agregacion/argmin_argmax.md)
+- [Indice](Avanzado/numpy/06_estadistica_agregacion/indice.md)
+- [Mean](Avanzado/numpy/06_estadistica_agregacion/mean.md)
+- [Median](Avanzado/numpy/06_estadistica_agregacion/median.md)
+- [Min Max](Avanzado/numpy/06_estadistica_agregacion/min_max.md)
+- [Std](Avanzado/numpy/06_estadistica_agregacion/std.md)
+- [Sum](Avanzado/numpy/06_estadistica_agregacion/sum.md)
+- [Det](Avanzado/numpy/07_algebra_lineal/det.md)
+- [Dot](Avanzado/numpy/07_algebra_lineal/dot.md)
+- [Indice](Avanzado/numpy/07_algebra_lineal/indice.md)
+- [Inv](Avanzado/numpy/07_algebra_lineal/inv.md)
+- [Matmul](Avanzado/numpy/07_algebra_lineal/matmul.md)
+- [Argsort](Avanzado/numpy/08_busqueda_ordenamiento/argsort.md)
+- [Indice](Avanzado/numpy/08_busqueda_ordenamiento/indice.md)
+- [Select](Avanzado/numpy/08_busqueda_ordenamiento/select.md)
+- [Sort](Avanzado/numpy/08_busqueda_ordenamiento/sort.md)
+- [Unique](Avanzado/numpy/08_busqueda_ordenamiento/unique.md)
+- [Where](Avanzado/numpy/08_busqueda_ordenamiento/where.md)
+- [Fundamentos Numpy](Avanzado/numpy/fundamentos_numpy.md)
+- [Indice](Avanzado/numpy/indice.md)
+
+##### Métodos y Referencia Técnica de OpenPyXL
+
+- [Indice](Avanzado/openpyxl/01_libro_hojas/indice.md)
+- [Load Workbook](Avanzado/openpyxl/01_libro_hojas/load_workbook.md)
+- [Workbook](Avanzado/openpyxl/01_libro_hojas/workbook.md)
+- [Append](Avanzado/openpyxl/02_lectura_escritura_celdas/append.md)
+- [Cell Access](Avanzado/openpyxl/02_lectura_escritura_celdas/cell_access.md)
+- [Indice](Avanzado/openpyxl/02_lectura_escritura_celdas/indice.md)
+- [Font](Avanzado/openpyxl/03_estilos_formato/font.md)
+- [Indice](Avanzado/openpyxl/03_estilos_formato/indice.md)
+- [Pattern Fill](Avanzado/openpyxl/03_estilos_formato/pattern_fill.md)
+- [Column Dimensions](Avanzado/openpyxl/04_formulas_dimensiones/column_dimensions.md)
+- [Formulas Nativas](Avanzado/openpyxl/04_formulas_dimensiones/formulas_nativas.md)
+- [Indice](Avanzado/openpyxl/04_formulas_dimensiones/indice.md)
+- [Fundamentos Openpyxl](Avanzado/openpyxl/fundamentos_openpyxl.md)
+- [Indice](Avanzado/openpyxl/indice.md)
+
+##### Métodos y Referencia Técnica de Matplotlib
+
+- [Figure](Avanzado/matplotlib/01_figura_ejes/figure.md)
+- [Indice](Avanzado/matplotlib/01_figura_ejes/indice.md)
+- [Set Title Labels](Avanzado/matplotlib/01_figura_ejes/set_title_labels.md)
+- [Subplots](Avanzado/matplotlib/01_figura_ejes/subplots.md)
+- [Bar](Avanzado/matplotlib/02_graficos_basicos/bar.md)
+- [Hist](Avanzado/matplotlib/02_graficos_basicos/hist.md)
+- [Indice](Avanzado/matplotlib/02_graficos_basicos/indice.md)
+- [Plot](Avanzado/matplotlib/02_graficos_basicos/plot.md)
+- [Scatter](Avanzado/matplotlib/02_graficos_basicos/scatter.md)
+- [Grid](Avanzado/matplotlib/03_personalizacion_estilos/grid.md)
+- [Indice](Avanzado/matplotlib/03_personalizacion_estilos/indice.md)
+- [Legend](Avanzado/matplotlib/03_personalizacion_estilos/legend.md)
+- [Set Lim](Avanzado/matplotlib/03_personalizacion_estilos/set_lim.md)
+- [Indice](Avanzado/matplotlib/04_exportacion_composicion/indice.md)
+- [Savefig](Avanzado/matplotlib/04_exportacion_composicion/savefig.md)
+- [Tight Layout](Avanzado/matplotlib/04_exportacion_composicion/tight_layout.md)
+- [Fundamentos Matplotlib](Avanzado/matplotlib/fundamentos_matplotlib.md)
+- [Indice](Avanzado/matplotlib/indice.md)
+
+##### Métodos y Referencia Técnica de Seaborn
+
+- [Ecdfplot](Avanzado/seaborn/01_distribuciones/ecdfplot.md)
+- [Histplot](Avanzado/seaborn/01_distribuciones/histplot.md)
+- [Indice](Avanzado/seaborn/01_distribuciones/indice.md)
+- [Kdeplot](Avanzado/seaborn/01_distribuciones/kdeplot.md)
+- [Barplot](Avanzado/seaborn/02_categoricos/barplot.md)
+- [Boxplot](Avanzado/seaborn/02_categoricos/boxplot.md)
+- [Countplot](Avanzado/seaborn/02_categoricos/countplot.md)
+- [Indice](Avanzado/seaborn/02_categoricos/indice.md)
+- [Violinplot](Avanzado/seaborn/02_categoricos/violinplot.md)
+- [Indice](Avanzado/seaborn/03_relacionales/indice.md)
+- [Lineplot](Avanzado/seaborn/03_relacionales/lineplot.md)
+- [Scatterplot](Avanzado/seaborn/03_relacionales/scatterplot.md)
+- [Heatmap](Avanzado/seaborn/04_matrices_multivariados/heatmap.md)
+- [Indice](Avanzado/seaborn/04_matrices_multivariados/indice.md)
+- [Pairplot](Avanzado/seaborn/04_matrices_multivariados/pairplot.md)
+- [Fundamentos Seaborn](Avanzado/seaborn/fundamentos_seaborn.md)
+- [Indice](Avanzado/seaborn/indice.md)
+
+##### Métodos y Referencia Técnica de Scikit-learn
+
+- [Indice](Avanzado/scikit_learn/01_preprocesamiento/indice.md)
+- [One Hot Encoder](Avanzado/scikit_learn/01_preprocesamiento/one_hot_encoder.md)
+- [Simple Imputer](Avanzado/scikit_learn/01_preprocesamiento/simple_imputer.md)
+- [Standard Scaler](Avanzado/scikit_learn/01_preprocesamiento/standard_scaler.md)
+- [Cross Val Score](Avanzado/scikit_learn/02_particion_seleccion/cross_val_score.md)
+- [Grid Search Cv](Avanzado/scikit_learn/02_particion_seleccion/grid_search_cv.md)
+- [Indice](Avanzado/scikit_learn/02_particion_seleccion/indice.md)
+- [Train Test Split](Avanzado/scikit_learn/02_particion_seleccion/train_test_split.md)
+- [Decision Tree](Avanzado/scikit_learn/03_estimadores_clasicos/decision_tree.md)
+- [Indice](Avanzado/scikit_learn/03_estimadores_clasicos/indice.md)
+- [Kmeans](Avanzado/scikit_learn/03_estimadores_clasicos/kmeans.md)
+- [Linear Regression](Avanzado/scikit_learn/03_estimadores_clasicos/linear_regression.md)
+- [Logistic Regression](Avanzado/scikit_learn/03_estimadores_clasicos/logistic_regression.md)
+- [Random Forest](Avanzado/scikit_learn/03_estimadores_clasicos/random_forest.md)
+- [Classification Report](Avanzado/scikit_learn/04_metricas_evaluacion/classification_report.md)
+- [Confusion Matrix](Avanzado/scikit_learn/04_metricas_evaluacion/confusion_matrix.md)
+- [Indice](Avanzado/scikit_learn/04_metricas_evaluacion/indice.md)
+- [Mean Squared Error](Avanzado/scikit_learn/04_metricas_evaluacion/mean_squared_error.md)
+- [Column Transformer](Avanzado/scikit_learn/05_pipelines/column_transformer.md)
+- [Indice](Avanzado/scikit_learn/05_pipelines/indice.md)
+- [Pipeline](Avanzado/scikit_learn/05_pipelines/pipeline.md)
+- [Fundamentos Scikit Learn](Avanzado/scikit_learn/fundamentos_scikit_learn.md)
+- [Indice](Avanzado/scikit_learn/indice.md)
+
+##### Métodos y Referencia Técnica de FastAPI
+
+- [Apirouter](Avanzado/fastapi/01_aplicacion_enrutamiento/apirouter.md)
+- [Endpoints](Avanzado/fastapi/01_aplicacion_enrutamiento/endpoints.md)
+- [Fastapi App](Avanzado/fastapi/01_aplicacion_enrutamiento/fastapi_app.md)
+- [Indice](Avanzado/fastapi/01_aplicacion_enrutamiento/indice.md)
+- [Indice](Avanzado/fastapi/02_parametros_validacion/indice.md)
+- [Path Params](Avanzado/fastapi/02_parametros_validacion/path_params.md)
+- [Query Params](Avanzado/fastapi/02_parametros_validacion/query_params.md)
+- [Request Body](Avanzado/fastapi/02_parametros_validacion/request_body.md)
+- [Depends](Avanzado/fastapi/03_inyeccion_dependencias/depends.md)
+- [Indice](Avanzado/fastapi/03_inyeccion_dependencias/indice.md)
+- [Security](Avanzado/fastapi/03_inyeccion_dependencias/security.md)
+- [Http Exception](Avanzado/fastapi/04_respuestas_errores/http_exception.md)
+- [Indice](Avanzado/fastapi/04_respuestas_errores/indice.md)
+- [Response Model](Avanzado/fastapi/04_respuestas_errores/response_model.md)
+- [Fundamentos Fastapi](Avanzado/fastapi/fundamentos_fastapi.md)
+- [Indice](Avanzado/fastapi/indice.md)
+
+##### Métodos y Referencia Técnica de PyTorch
+
+- [Cuda Device](Avanzado/pytorch/01_tensores_operaciones/cuda_device.md)
+- [Indice](Avanzado/pytorch/01_tensores_operaciones/indice.md)
+- [Tensor Creation](Avanzado/pytorch/01_tensores_operaciones/tensor_creation.md)
+- [Tensor Ops](Avanzado/pytorch/01_tensores_operaciones/tensor_ops.md)
+- [Backward](Avanzado/pytorch/02_autograd_diferenciacion/backward.md)
+- [Grad](Avanzado/pytorch/02_autograd_diferenciacion/grad.md)
+- [Indice](Avanzado/pytorch/02_autograd_diferenciacion/indice.md)
+- [No Grad](Avanzado/pytorch/02_autograd_diferenciacion/no_grad.md)
+- [Indice](Avanzado/pytorch/03_modulos_redes/indice.md)
+- [Linear Layer](Avanzado/pytorch/03_modulos_redes/linear_layer.md)
+- [Nn Module](Avanzado/pytorch/03_modulos_redes/nn_module.md)
+- [Sequential](Avanzado/pytorch/03_modulos_redes/sequential.md)
+- [Dataloader](Avanzado/pytorch/04_optimizacion_entrenamiento/dataloader.md)
+- [Indice](Avanzado/pytorch/04_optimizacion_entrenamiento/indice.md)
+- [Loss Functions](Avanzado/pytorch/04_optimizacion_entrenamiento/loss_functions.md)
+- [Optimizer Step](Avanzado/pytorch/04_optimizacion_entrenamiento/optimizer_step.md)
+- [Fundamentos Pytorch](Avanzado/pytorch/fundamentos_pytorch.md)
+- [Indice](Avanzado/pytorch/indice.md)
+
+##### Métodos y Referencia Técnica de SQLAlchemy 2.0
+
+- [Connection Execute](Avanzado/sqlalchemy/01_motor_conexiones/connection_execute.md)
+- [Create Engine](Avanzado/sqlalchemy/01_motor_conexiones/create_engine.md)
+- [Indice](Avanzado/sqlalchemy/01_motor_conexiones/indice.md)
+- [Declarative Base](Avanzado/sqlalchemy/02_declarative_orm/declarative_base.md)
+- [Indice](Avanzado/sqlalchemy/02_declarative_orm/indice.md)
+- [Mapped Column](Avanzado/sqlalchemy/02_declarative_orm/mapped_column.md)
+- [Relationship](Avanzado/sqlalchemy/02_declarative_orm/relationship.md)
+- [Indice](Avanzado/sqlalchemy/03_sesion_transacciones/indice.md)
+- [Session](Avanzado/sqlalchemy/03_sesion_transacciones/session.md)
+- [Session Commit Rollback](Avanzado/sqlalchemy/03_sesion_transacciones/session_commit_rollback.md)
+- [Indice](Avanzado/sqlalchemy/04_consultas_crud/indice.md)
+- [Insert Update Delete](Avanzado/sqlalchemy/04_consultas_crud/insert_update_delete.md)
+- [Scalars All](Avanzado/sqlalchemy/04_consultas_crud/scalars_all.md)
+- [Select Where](Avanzado/sqlalchemy/04_consultas_crud/select_where.md)
+- [Fundamentos Sqlalchemy](Avanzado/sqlalchemy/fundamentos_sqlalchemy.md)
+- [Indice](Avanzado/sqlalchemy/indice.md)
+
+---
+
+## 9. Ruta pedagógica escalonada: De los fundamentos a Machine Learning y Backend
+
+En la ingeniería de software y la ciencia de datos profesional existe un principio innegociable: **los atajos son una ilusión y saltarse los fundamentos técnicos genera deuda técnica irreparable**. Intentar programar redes neuronales en PyTorch o construir microservicios en FastAPI sin dominar la memoria contigua, la vectorización o el bucle de eventos conduce inevitablemente a código ineficiente, frágil y opaco.
+
+Para maximizar el aprendizaje sin lagunas conceptuales, el estudio del nivel avanzado debe seguir estrictamente esta ruta escalonada en cuatro niveles:
+
+```text
+[ Nivel 0: Dominio del Núcleo de Python ]
+   │  - POO estricta, Decoradores, Metodología Dunder, Context Managers
+   │  - Tipado gradual (typing), Dataclasses, Concurrencia (threading/asyncio)
+   ▼
+[ Nivel 1: Cómputo Matricial y Vectorial (NumPy) ]
+   │  - Arreglos contiguos en memoria C (ndarray), tipos físicos homogéneos
+   │  - Broadcasting, álgebra lineal, operaciones sin bucles de Python
+   ▼
+[ Nivel 2: Ingeniería y Manipulación Tabular (Pandas y OpenPyXL) ]
+   │  - Series y DataFrames, alineación automática por índice
+   │  - Limpieza defensiva de nulos, agregaciones grupales, I/O con CSV/Excel
+   ▼
+[ Nivel 3: Análisis Exploratorio Visual (Matplotlib y Seaborn) ]
+   │  - Diagnóstico visual de distribuciones, outliers y correlaciones
+   │  - Gráficos con la API orientada a objetos (fig, ax) listos para producción
+   ▼
+[ Nivel 4: Especialización Técnica ]
+   ├───────────────────────────────────────────┬───────────────────────────────────────────┐
+   │                                           │                                           │
+   ▼ RUTA MACHINE LEARNING & DEEP LEARNING     ▼ RUTA BACKEND & ARQUITECTURA DISTRIBUIDA   │
+   1. Scikit-learn (ML Clásico y Pipelines)    1. Tipado Gradual y Modelado Pydantic       │
+   2. XGBoost / LightGBM (Gradient Boosting)   2. Persistencia y ORM con SQLAlchemy 2.0    │
+   3. PyTorch (Tensores GPU, Redes Profundas)  3. Microservicios Asíncronos con FastAPI     │
+   4. Hugging Face (NLP, LLMs y Fine-Tuning)   4. Testing Riguroso (pytest) y Docker       │
+```
+
+### Justificación técnica del orden escalonado
+
+1. **¿Por qué NumPy antes que Pandas?**
+   Pandas está construido directamente sobre NumPy. Si no comprendés cómo funciona un arreglo `ndarray`, qué es una vista en memoria frente a una copia o cómo opera el *broadcasting*, serás incapaz de razonar sobre el consumo de memoria de un `DataFrame` o resolver advertencias críticas como `SettingWithCopyWarning`.
+2. **¿Por qué Pandas antes que Scikit-learn?**
+   En problemas de negocio reales, el 80% del tiempo de un proyecto de Machine Learning se invierte en la ingesta, limpieza, imputación de nulos, codificación de variables y deduplicación. Scikit-learn espera datos numéricos y limpios; pasarle datos sin dominar Pandas conduce a fallos continuos de preprocesamiento.
+3. **¿Por qué Scikit-learn antes que PyTorch?**
+   Scikit-learn enseña la disciplina del aprendizaje automático: división no contaminada de datos (`train_test_split`), validación cruzada (*cross-validation*), métricas de evaluación rigurosas (precisión, sensibilidad, ROC-AUC) y la abstracción universal de producción `fit()`/`predict()`. Saltar directamente a Deep Learning sin entender el sobreajuste (*overfitting*), la regularización o el balance de clases en modelos lineales o de árboles genera redes complejas que aprenden ruido.
+4. **¿Por qué Concurrencia y Tipado antes que FastAPI?**
+   FastAPI no es una caja negra: es una arquitectura asíncrona sobre Starlette y Pydantic. Quien no domina corrutinas (`async`/`await`), gestores de contexto asíncronos y anotaciones de tipo avanzadas (`Union`, `TypeVar`, `Annotated`) termina bloqueando el bucle de eventos del servidor con operaciones síncronas que colapsan la latencia del sistema.
+
 
