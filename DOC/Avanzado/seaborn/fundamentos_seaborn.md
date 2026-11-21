@@ -11,6 +11,7 @@ Desarrollada por Michael Waskom, Seaborn permite responder preguntas analíticas
 ## 3. Fundamentos y conceptos
 
 Para comprender y dominar Seaborn es indispensable entender sus dos niveles de funciones:
+
 1. **Funciones a nivel de ejes (Axes-level functions):**
    - Operan sobre un objeto `matplotlib.axes.Axes` individual.
    - Retornan dicho objeto `Axes`.
